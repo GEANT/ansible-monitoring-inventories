@@ -1,0 +1,38 @@
+---
+# file: host_vars/data-backups.example.org.yml
+
+# Machine Variables
+
+fqdn: "data-backups.example.org"
+files_dir: "/opt/ansible-monitoring/inventories/files"
+
+common:
+ volumes:
+  - volume_dev: "/dev/vdc"
+    volume_path: "/data"
+    volume_fs: "ext4"
+ # Add(present) or Remove(absent) SWAP file
+ swap:
+  name_swapfile: "swapfile"
+  size_swapfile: "2048"
+  state: present
+
+# rsnapshot Variables
+# 'id_rsa' and 'id_rsa.pub' need to retrieve backups from IdPs with rsnapshot.
+#  See the /opt/ansible-monitoring/inventories/files/sample-FQDN-data-backups-dir
+
+rsnapshot:
+ ssh_priv_key: "id_rsa"
+ ssh_pub_key: "id_rsa.pub"
+ idpcloud:
+  ssh_pub_key: "{{ lookup('file', '/opt/ansible-shibboleth/roles/rsync/files/ssh/ssh_pub_key') }}"
+ # ext-backup: if populated it will enable an external backup host
+ ext-backup:
+  host: "external-backup.example.org"
+  user: "external-backup-user"
+  ssh_priv_key: "idpbakuser_rsa"
+  ssh_pub_key: "idpbakuser_rsa.pub"
+  local_dir: /data/backups
+  # where to push a local archive on a remote server
+  dest_dir: "~/{{ fqdn }}"
+  bck_cron_time: "40 * * * *"

@@ -1,0 +1,20 @@
+# Put here IP or FQDN of your Elasticsearch Servers
+[Debian-Elasticsearch]
+elasticsearch1.example.org
+elasticsearch2.example.org
+
+# Put here IP or FQDN of your Kibana Servers
+[Debian-Kibana]
+kibana.example.org
+
+# Put here IP or FQDN of your Check MK Servers
+[Debian-Checkmk]
+checkmk.example.org
+
+# Put here IP or FQDN of your Rsyslog Servers 
+[Debian-Rsyslog]
+logs.example.org
+
+# Put here IP or FQDN of your Rsnapshot Servers for Data Backups
+[Debian-Rsnapshot]
+data-backups.example.org

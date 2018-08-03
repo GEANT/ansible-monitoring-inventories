@@ -1,0 +1,28 @@
+---
+# file: host_vars/elasticsearch1.example.org.yml
+
+# Machine Variables
+
+fqdn: "elasticsearch1.example.org" 
+
+common:
+ volumes:
+  - volume_dev: "/dev/vdc"
+    volume_path: "/data"
+    volume_fs: "ext4"
+ # Add(present) or Remove(absent) SWAP file. Remove entirely "swap" section to don't use it
+ swap:
+  name_swapfile: "swapfile"
+  size_swapfile: "2048"
+  state: present
+
+# Elasticsearch Variables
+
+elasticsearch:
+ config:
+  cluster_name: "elasticsearch"
+  node_name: "elasticsearch1"
+  discovery_hosts:
+   - "elasticsearch1.example.org"
+   - "elasticsearch2.example.org"
+  min_master_nodes: 2

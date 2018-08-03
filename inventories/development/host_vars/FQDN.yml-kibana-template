@@ -1,0 +1,28 @@
+---
+# file: host_vars/kibana.example.org.yml
+
+# Machine Variables
+
+fqdn: "kibana.example.org"
+files_dir: "/opt/ansible-monitoring/inventories/files"
+
+common:
+ ssl: "True"
+ ca: "ca.crt"
+ ssl_cert: "kibana.example.org.crt"
+ ssl_key: "kibana.example.org.key"
+ # Add(present) or Remove(absent) SWAP file. Remove entirely "swap" section to don't use it
+ swap:
+  name_swapfile: "swapfile"
+  size_swapfile: "2048"
+  state: present
+
+apache:
+   admin_email: "service-support@example.org"
+
+# Kibana Variables
+
+kibana:
+ config:
+  server_name: "kibana"
+  elasticsearch_url: "http://192.168.25.56:9200"
