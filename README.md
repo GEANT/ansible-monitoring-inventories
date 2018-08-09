@@ -5,5 +5,5 @@ It has to be used with the "ansible-monitoring" repository to complete the "Ansi
 
 To get the Playbook working it is needed to run the commands below and change what you need under 'inventories' directory:
 
-   * ```cd /opt/ ; git clone https://github.com/malavolti/ansible-monitoring.git```
-   * ```cd /opt/ansible-monitoring ; git clone https://github.com/malavolti/ansible-monitoring-inventories inventories```
+   * ```cd /opt/ ; git clone https://github.com/[malavolti|ConsortiumGARR|GEANT]/ansible-monitoring.git```
+   * ```cd /opt/ansible-monitoring ; git clone https://github.com/[malavolti|ConsortiumGARR|GEANT]/ansible-monitoring-inventories inventories```
